@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>Hojo Undo 補助運動</title>
+
+<!-- Google Fonts: Roboto + Roboto Mono -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap"
+  rel="stylesheet"
+>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+  --light: #FAFAF9;
+  --dark: #44403B;
+
+  --dark-muted: rgba(68,64,59,0.62);
+  --dark-subtle: rgba(68,64,59,0.42);
+
+  --rule-weight: 1px;
+  --rule-dark: rgba(68,64,59,0.24);
+
+  --type-small:
+    clamp(0.68rem, 0.7vw, 0.78rem);
+
+  --type-body:
+    clamp(0.95rem, 1.25vw, 1.2rem);
+
+  --type-display:
+    clamp(2.4rem, 6.8vw, 7.2rem);
+
+  --page-x:
+    clamp(1.25rem, 3.25vw, 3.5rem);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+
+body {
+  overflow: hidden;
+
+  background: var(--light);
+  color: var(--dark);
+
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1,
+p {
+  margin-top: 0;
+}
+
+
+/* =========================================================
+   SKETCHFAB VIEWER
+========================================================= */
+
+.viewer {
+  position: absolute;
+  inset: 0;
+
+  background: var(--light);
+}
+
+
+.viewer iframe {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   LIGHT GRADIENT OVERLAY
+
+   Solid #FAFAF9 at left.
+   Fully transparent at 25%.
+
+   To change where transparency is complete,
+   change the final "25%" value below.
+========================================================= */
+
+.viewer-gradient {
+  position: absolute;
+  z-index: 5;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #FAFAF9 0%,
+      rgba(250,250,249,0) 25%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FIXED CHANNEL HEADER
+========================================================= */
+
+.installation-ui {
+  position: fixed;
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  align-items: start;
+
+  padding:
+    max(1rem, env(safe-area-inset-top))
+    var(--page-x)
+    1rem;
+
+  color: var(--dark);
+
+  mix-blend-mode: normal;
+
+  pointer-events: none;
+}
+
+
+.channel-description,
+.channel {
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-small);
+  font-weight: 400;
+
+  line-height: 1.4;
+  letter-spacing: 0.035em;
+
+  color: var(--dark);
+}
+
+
+.channel-description {
+  justify-self: start;
+}
+
+
+.channel {
+  justify-self: end;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   WORK TITLE
+========================================================= */
+
+.work-title {
+  position: absolute;
+  z-index: 10;
+
+  top:
+    max(
+      5rem,
+      calc(env(safe-area-inset-top) + 4rem)
+    );
+
+  left: var(--page-x);
+  right: var(--page-x);
+
+  pointer-events: none;
+}
+
+
+h1 {
+  max-width: 80rem;
+
+  margin: 0;
+
+  font-family:
+    "Roboto",
+    Arial,
+    sans-serif;
+
+  font-size: var(--type-display);
+  font-weight: 400;
+
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+
+.title-main {
+  display: block;
+
+  color: var(--dark);
+}
+
+
+.title-kanji {
+  display: block;
+
+  margin-top: 0.65rem;
+
+  font-family:
+    "Roboto",
+    Arial,
+    sans-serif;
+
+  font-size: 0.36em;
+  font-weight: 400;
+
+  line-height: 1.2;
+  letter-spacing: 0.07em;
+
+  color: var(--dark-muted);
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.info {
+  position: absolute;
+  z-index: 10;
+
+  left: var(--page-x);
+
+  bottom:
+    max(
+      2rem,
+      env(safe-area-inset-bottom)
+    );
+
+  width:
+    min(
+      34rem,
+      calc(100% - (var(--page-x) * 2))
+    );
+
+  pointer-events: none;
+}
+
+
+.rule {
+  width: 2.25rem;
+  height: var(--rule-weight);
+
+  margin-bottom: 1.25rem;
+
+  background: var(--rule-dark);
+}
+
+
+.description {
+  max-width: 32rem;
+
+  margin:
+    0
+    0
+    1.75rem;
+
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-body);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+
+  color: var(--dark);
+}
+
+
+/* =========================================================
+   METADATA
+========================================================= */
+
+.metadata {
+  display: grid;
+
+  grid-template-columns:
+    6rem
+    minmax(0, 1fr);
+
+  gap:
+    0.45rem
+    1rem;
+
+  max-width: 28rem;
+
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-small);
+  font-weight: 400;
+
+  line-height: 1.4;
+  letter-spacing: 0.035em;
+}
+
+
+.metadata .label {
+  color: var(--dark-subtle);
+}
+
+
+.metadata .value {
+  color: var(--dark-muted);
+}
+
+
+/* =========================================================
+   INTERACTION GUIDE
+========================================================= */
+
+.viewer-guide {
+  position: absolute;
+  z-index: 10;
+
+  right: var(--page-x);
+
+  bottom:
+    max(
+      2rem,
+      env(safe-area-inset-bottom)
+    );
+
+  width: 19rem;
+
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-small);
+  font-weight: 400;
+
+  line-height: 1.4;
+  letter-spacing: 0.035em;
+
+  color: var(--dark-muted);
+
+  pointer-events: none;
+}
+
+
+.guide-title {
+  margin-bottom: 0.9rem;
+
+  color: var(--dark);
+}
+
+
+.guide-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(8rem, 1.4fr)
+    minmax(0, 0.6fr);
+
+  gap: 0.8rem;
+}
+
+
+.guide-row + .guide-row {
+  margin-top: 0.3rem;
+}
+
+
+.guide-input {
+  color: var(--dark-subtle);
+}
+
+
+.guide-action {
+  color: var(--dark-muted);
+}
+
+
+/* =========================================================
+   TABLET
+   781px to 1180px
+========================================================= */
+
+@media
+  (min-width: 781px)
+  and
+  (max-width: 1180px) {
+
+  :root {
+    --type-small: 0.72rem;
+
+    --type-body:
+      clamp(0.98rem, 1.7vw, 1.12rem);
+
+    --type-display:
+      clamp(3.04rem, 6.56vw, 5.28rem);
+
+    --page-x:
+      clamp(1.75rem, 4vw, 3rem);
+  }
+
+
+  .installation-ui {
+    padding:
+      max(1rem, env(safe-area-inset-top))
+      var(--page-x)
+      0.85rem;
+  }
+
+
+  .channel-description,
+  .channel,
+  .metadata,
+  .viewer-guide {
+    line-height: 1.45;
+    letter-spacing: 0.03em;
+  }
+
+
+  .work-title {
+    top:
+      max(
+        5rem,
+        calc(env(safe-area-inset-top) + 4rem)
+      );
+  }
+
+
+  h1 {
+    max-width: 58rem;
+
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+
+
+  .title-kanji {
+    margin-top: 0.55rem;
+
+    font-size: 0.36em;
+    letter-spacing: 0.065em;
+  }
+
+
+  .info {
+    width:
+      min(
+        30rem,
+        calc(100% - (var(--page-x) * 2))
+      );
+  }
+
+
+  .description {
+    max-width: 28rem;
+  }
+
+
+  .metadata {
+    max-width: 26rem;
+  }
+
+
+  .viewer-guide {
+    width: 18rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   780px and below
+========================================================= */
+
+@media (max-width: 780px) {
+
+  :root {
+    --type-small: 0.68rem;
+
+    --type-body:
+      clamp(0.92rem, 3.7vw, 1.02rem);
+
+    --type-display:
+      clamp(2.04rem, 9.6vw, 4.32rem);
+
+    --page-x: 1.25rem;
+  }
+
+
+  .installation-ui {
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    gap: 1rem;
+
+    padding:
+      max(0.9rem, env(safe-area-inset-top))
+      var(--page-x)
+      0.75rem;
+  }
+
+
+  .channel-description,
+  .channel,
+  .metadata,
+  .viewer-guide {
+    line-height: 1.45;
+    letter-spacing: 0.025em;
+  }
+
+
+  .work-title {
+    top:
+      max(
+        4.5rem,
+        calc(env(safe-area-inset-top) + 3.75rem)
+      );
+  }
+
+
+  h1 {
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+
+
+  .title-kanji {
+    margin-top: 0.45rem;
+
+    font-size: 0.36em;
+
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+  }
+
+
+  .info {
+    bottom:
+      max(
+        1.25rem,
+        env(safe-area-inset-bottom)
+      );
+
+    width:
+      min(
+        22rem,
+        calc(100% - (var(--page-x) * 2))
+      );
+  }
+
+
+  .rule {
+    width: 2rem;
+    margin-bottom: 1rem;
+  }
+
+
+  .description {
+    max-width: 21rem;
+
+    margin-bottom: 1.25rem;
+
+    line-height: 1.5;
+  }
+
+
+  .metadata {
+    grid-template-columns:
+      5.5rem
+      minmax(0, 1fr);
+
+    gap:
+      0.35rem
+      0.75rem;
+
+    max-width: 21rem;
+  }
+
+
+  .viewer-guide {
+    right: var(--page-x);
+
+    bottom:
+      max(
+        1.25rem,
+        env(safe-area-inset-bottom)
+      );
+
+    width: 16rem;
+  }
+
+
+  .guide-title {
+    margin-bottom: 0.7rem;
+  }
+
+
+  .guide-row {
+    grid-template-columns:
+      10rem
+      minmax(0, 1fr);
+
+    gap: 0.5rem;
+  }
+
+}
+
+
+/* =========================================================
+   NARROW MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .info {
+    width:
+      calc(
+        100% -
+        (var(--page-x) * 2)
+      );
+  }
+
+
+  .description {
+    max-width: 18rem;
+
+    margin-bottom: 0;
+  }
+
+
+  .metadata {
+    display: none;
+  }
+
+
+  .viewer-guide {
+    right: auto;
+    left: var(--page-x);
+
+    bottom: 10.75rem;
+
+    width: 16rem;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 390px) {
+
+  :root {
+    --type-small: 0.64rem;
+    --type-body: 0.9rem;
+
+    --type-display:
+      clamp(1.84rem, 9.2vw, 2.72rem);
+
+    --page-x: 1rem;
+  }
+
+
+  .installation-ui {
+    padding-left: var(--page-x);
+    padding-right: var(--page-x);
+  }
+
+
+  .work-title {
+    top:
+      max(
+        4.2rem,
+        calc(env(safe-area-inset-top) + 3.5rem)
+      );
+  }
+
+
+  .description {
+    max-width:
+      calc(100vw - 2rem);
+  }
+
+
+  .viewer-guide {
+    width: 15rem;
+
+    bottom: 10.75rem;
+  }
+
+
+  .guide-row {
+    grid-template-columns:
+      9.25rem
+      minmax(0, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   SHORT LANDSCAPE
+========================================================= */
+
+@media
+  (max-height: 560px)
+  and
+  (orientation: landscape) {
+
+  .installation-ui {
+    padding-top:
+      max(
+        0.75rem,
+        env(safe-area-inset-top)
+      );
+  }
+
+
+  .work-title {
+    top:
+      max(
+        3.5rem,
+        calc(env(safe-area-inset-top) + 2.8rem)
+      );
+  }
+
+
+  .title-kanji {
+    margin-top: 0.3rem;
+  }
+
+
+  .description {
+    max-width: 28rem;
+
+    margin-bottom: 0.8rem;
+
+    line-height: 1.45;
+  }
+
+
+  .metadata {
+    gap:
+      0.2rem
+      0.75rem;
+  }
+
+
+  .viewer-guide {
+    width: 17rem;
+  }
+
+
+  .guide-title {
+    margin-bottom: 0.45rem;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     POINT CLOUD
+========================================================= -->
+
+<div class="viewer">
+
+  <iframe
+    title="Hojo Undo 補助運動"
+    src="https://sketchfab.com/models/12edb1d4e12f4532b8b60159dd3592c0/embed?ui_infos=0&ui_watermark_link=0"
+    frameborder="0"
+    allow="autoplay; fullscreen; xr-spatial-tracking"
+    allowfullscreen
+    mozallowfullscreen="true"
+    webkitallowfullscreen="true"
+    xr-spatial-tracking
+    execution-while-out-of-viewport
+    execution-while-not-rendered
+    web-share>
+  </iframe>
+
+</div>
+
+
+<!-- =========================================================
+     #FAFAF9 GRADIENT OVERLAY
+========================================================= -->
+
+<div
+  class="viewer-gradient"
+  aria-hidden="true"
+></div>
+
+
+<!-- =========================================================
+     FIXED CHANNEL HEADER
+========================================================= -->
+
+<div
+  class="installation-ui"
+  aria-hidden="true"
+>
+
+  <div class="channel-description">
+    Measure of a Stick / Digital object
+  </div>
+
+  <div class="channel">
+    Channel A
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     WORK TITLE
+========================================================= -->
+
+<header class="work-title">
+
+  <h1>
+
+    <span class="title-main">
+      Hojo Undo
+    </span>
+
+    <span
+      class="title-kanji"
+      lang="ja"
+    >
+      補助運動
+    </span>
+
+  </h1>
+
+</header>
+
+
+<!-- =========================================================
+     INFORMATION
+========================================================= -->
+
+<section class="info">
+
+  <div
+    class="rule"
+    aria-hidden="true"
+  ></div>
+
+
+  <p class="description">
+    An interactive spatial record of an assemblage
+    of supplementary training objects. The point cloud
+    registers another transformation of the material
+    object through capture, abstraction, navigation
+    and digital circulation.
+  </p>
+
+
+  <div class="metadata">
+
+    <div class="label">
+      Medium
+    </div>
+
+    <div class="value">
+      Point cloud
+    </div>
+
+
+    <div class="label">
+      Status
+    </div>
+
+    <div class="value">
+      Iterative study
+    </div>
+
+
+    <div class="label">
+      Subject
+    </div>
+
+    <div class="value">
+      Prop-object assemblage
+    </div>
+
+
+    <div class="label">
+      Mode
+    </div>
+
+    <div class="value">
+      Interactive 3D
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     TOUCH + MOUSE INTERACTION GUIDE
+========================================================= -->
+
+<div
+  class="viewer-guide"
+  aria-hidden="true"
+>
+
+  <div class="guide-title">
+    Explore the object
+  </div>
+
+
+  <div class="guide-row">
+
+    <span class="guide-input">
+      Drag / mouse drag
+    </span>
+
+    <span class="guide-action">
+      Orbit
+    </span>
+
+  </div>
+
+
+  <div class="guide-row">
+
+    <span class="guide-input">
+      Pinch / mouse wheel
+    </span>
+
+    <span class="guide-action">
+      Zoom
+    </span>
+
+  </div>
+
+
+  <div class="guide-row">
+
+    <span class="guide-input">
+      Two-finger / shift-drag
+    </span>
+
+    <span class="guide-action">
+      Pan
+    </span>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
