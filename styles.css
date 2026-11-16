@@ -13,3 +13,5 @@ a { color: rgb(0, 0, 0); font-size: 1em; line-height: 2.5; text-decoration-line:
 a:hover { text-decoration: line-through; }
 
 div { color: rgb(0, 0, 0); font-size: 0.8em; line-height: 2; margin-left: 10%; margin-top: 2.5%; margin-bottom: 2.5%; }
+
+img { display: block; width: 50%; max-width: 100%; height: auto; margin-left: 10%; margin-top: 2.5%; margin-bottom: 2.5%; }
