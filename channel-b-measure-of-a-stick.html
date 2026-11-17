@@ -838,10 +838,18 @@ p {
 }
 
 
-/* Transformation chain set at a mid size, below the display sizes */
+/* Transformation chain uses the opening subtitle's type style */
 
 .transformation-item {
-  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-body);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: -0.02em;
 }
 
 
