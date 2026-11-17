@@ -23,10 +23,7 @@
 /* =========================================================
    GLOBAL
 
-   Display sizes are 80% of the original:
-   desktop: 2.4rem / 6.8vw / 7.2rem
-   tablet:  3.04rem / 6.56vw / 5.28rem
-   mobile:  2.04rem / 9.6vw / 4.32rem
+   Display sizes are twice the body size at each breakpoint
 ========================================================= */
 
 :root {
@@ -42,7 +39,7 @@
   --type-body: clamp(0.95rem, 1.25vw, 1.2rem);
 
   /* 20% reduction from original display scale */
-  --type-display: clamp(2.4rem, 6.8vw, 7.2rem);
+  --type-display: clamp(1.9rem, 2.5vw, 2.4rem);
 
   --page-x: clamp(1.25rem, 3.25vw, 3.5rem);
   --section-y: clamp(5.5rem, 12vh, 10rem);
@@ -901,7 +898,6 @@ p {
 
 /* =========================================================
    TABLET
-   20% reduction from original scale
 ========================================================= */
 
 @media (min-width: 781px) and (max-width: 1180px) {
@@ -910,12 +906,8 @@ p {
     --type-small: 0.72rem;
     --type-body: clamp(0.98rem, 1.7vw, 1.12rem);
 
-    /* original:
-       3.8rem, 8.2vw, 6.6rem
-       × 0.8
-    */
     --type-display:
-      clamp(3.04rem, 6.56vw, 5.28rem);
+      clamp(1.96rem, 3.4vw, 2.24rem);
 
     --page-x:
       clamp(1.75rem, 4vw, 3rem);
@@ -1019,7 +1011,6 @@ p {
 
 /* =========================================================
    MOBILE
-   20% reduction from original scale
 ========================================================= */
 
 @media (max-width: 780.98px) {
@@ -1029,12 +1020,8 @@ p {
     --type-body:
       clamp(0.92rem, 3.7vw, 1.02rem);
 
-    /* original:
-       2.55rem, 12vw, 5.4rem
-       × 0.8
-    */
     --type-display:
-      clamp(2.04rem, 9.6vw, 4.32rem);
+      clamp(1.84rem, 7.4vw, 2.04rem);
 
     --page-x: 1.25rem;
 
@@ -1186,7 +1173,6 @@ p {
 
 /* =========================================================
    SMALL MOBILE
-   20% reduction from original scale
 ========================================================= */
 
 @media (max-width: 390px) {
@@ -1195,12 +1181,7 @@ p {
     --type-small: 0.64rem;
     --type-body: 0.9rem;
 
-    /* original:
-       2.3rem, 11.5vw, 3.4rem
-       × 0.8
-    */
-    --type-display:
-      clamp(1.84rem, 9.2vw, 2.72rem);
+    --type-display: 1.8rem;
 
     --page-x: 1rem;
   }
