@@ -184,6 +184,17 @@ p {
 }
 
 
+/* Section headings sit in the label/row styling, not heading defaults */
+.section-label h2,
+.operations-header h2 {
+  margin: 0;
+
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+
 .section-number {
   display: block;
   margin-bottom: 1.25rem;
@@ -1099,7 +1110,7 @@ p {
    20% reduction from original scale
 ========================================================= */
 
-@media (max-width: 780px) {
+@media (max-width: 780.98px) {
 
   :root {
     --type-small: 0.68rem;
@@ -1363,6 +1374,8 @@ p {
 </div>
 
 
+<main>
+
 <!-- Opening -->
 
 <header class="opening">
@@ -1546,7 +1559,6 @@ p {
 
     <div
       class="slide-counter small-text"
-      aria-live="polite"
     >
 
       <span id="counter-current">
@@ -1650,10 +1662,12 @@ p {
 
   <div class="section-grid">
 
-    <aside class="section-label small-text">
-      <span class="section-number">01</span>
-      Research proposition
-    </aside>
+    <div class="section-label small-text">
+      <h2>
+        <span class="section-number">01</span>
+        Research proposition
+      </h2>
+    </div>
 
 
     <div class="proposition-copy body-text">
@@ -1694,10 +1708,12 @@ p {
 
   <div class="section-grid constellation-intro">
 
-    <aside class="section-label small-text">
-      <span class="section-number">02</span>
-      Theoretical constellation
-    </aside>
+    <div class="section-label small-text">
+      <h2>
+        <span class="section-number">02</span>
+        Theoretical constellation
+      </h2>
+    </div>
 
     <div class="body-text">
       A layered theoretical structure through which
@@ -1764,10 +1780,12 @@ p {
 
   <div class="section-grid">
 
-    <aside class="section-label small-text">
-      <span class="section-number">03</span>
-      Methodological approach
-    </aside>
+    <div class="section-label small-text">
+      <h2>
+        <span class="section-number">03</span>
+        Methodological approach
+      </h2>
+    </div>
 
 
     <div>
@@ -1828,10 +1846,12 @@ p {
 
   <div class="section-grid">
 
-    <aside class="section-label small-text">
-      <span class="section-number">04</span>
-      Subject / cultural tool
-    </aside>
+    <div class="section-label small-text">
+      <h2>
+        <span class="section-number">04</span>
+        Subject / cultural tool
+      </h2>
+    </div>
 
 
     <div>
@@ -1878,7 +1898,7 @@ p {
   <div class="operations-header">
 
     <div class="small-text">
-      05 / Research operations
+      <h2>05 / Research operations</h2>
     </div>
 
     <div class="small-text">
@@ -1952,7 +1972,7 @@ p {
   <div>
 
     <div class="section-label small-text">
-      06 / A provisional chain of transformations
+      <h2>06 / A provisional chain of transformations</h2>
     </div>
 
 
@@ -2009,6 +2029,8 @@ p {
 
 </footer>
 
+</main>
+
 
 <script>
 
@@ -2045,7 +2067,12 @@ p {
 
   const slideDuration = 8000;
 
-  let slidesPaused = false;
+  /* Auto-advance starts paused for users who prefer reduced motion */
+  let slidesPaused =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
   let hoveringSlider = false;
 
 
