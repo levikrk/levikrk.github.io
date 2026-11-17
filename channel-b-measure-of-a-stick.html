@@ -556,7 +556,7 @@ p {
 }
 
 
-/* 2px progress line retained */
+/* 2px progress line along the bottom edge */
 
 .slider-progress {
   position: absolute;
@@ -1567,7 +1567,10 @@ p {
 
       <span>/</span>
 
-      <span class="counter-total">
+      <span
+        class="counter-total"
+        id="counter-total"
+      >
         04
       </span>
 
@@ -2281,7 +2284,7 @@ p {
 
       touchStartX =
         event.changedTouches[0]
-          .screenX;
+          .clientX;
     },
     {
       passive: true
@@ -2295,7 +2298,7 @@ p {
 
       touchEndX =
         event.changedTouches[0]
-          .screenX;
+          .clientX;
 
 
       const distance =
@@ -2325,6 +2328,9 @@ p {
     }
   );
 
+
+  document.getElementById("counter-total")
+    .textContent = formatNumber(slides.length);
 
   updateToggleButton();
   restartProgress();
