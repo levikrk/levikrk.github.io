@@ -32,10 +32,11 @@
 :root {
   --light: #FAFAF9;
   --dark: #44403B;
-  --dark-background: #A1A1A1;
+  --dark-background: #666666;
 
-  --light-muted: rgba(250,250,249,0.62);
-  --dark-muted: rgba(68,64,59,0.60);
+  /* Solid colours: translucent text fell below contrast minimums */
+  --light-muted: #E8E7E4;
+  --dark-muted: #6B675F;
 
   --rule-weight: 1px;
   --rule-light: rgba(250,250,249,0.24);
@@ -214,9 +215,15 @@ p {
 
   color: var(--dark);
 
-  mix-blend-mode: normal;
+  transition: color 300ms ease;
 
   pointer-events: none;
+}
+
+
+/* Switched by script while over a dark-background section */
+.installation-ui.is-on-dark {
+  color: var(--light);
 }
 
 
@@ -1398,6 +1405,7 @@ p {
 <section
   class="research-slider"
   id="research-slider"
+  data-tone="dark"
   aria-label="Research themes slideshow"
 >
 
@@ -1575,6 +1583,33 @@ p {
 
       <button
         class="slider-button"
+        id="toggle-slideshow"
+        type="button"
+        aria-label="Pause slideshow"
+      >
+
+        <svg
+          class="icon-pause"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M9 5V19M15 5V19"></path>
+        </svg>
+
+        <svg
+          class="icon-play"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          hidden
+        >
+          <path d="M8 5L19 12L8 19Z"></path>
+        </svg>
+
+      </button>
+
+
+      <button
+        class="slider-button"
         id="next-slide"
         type="button"
         aria-label="Next slide"
@@ -1725,7 +1760,7 @@ p {
 
 <!-- Methodology -->
 
-<section class="section methodology">
+<section class="section methodology" data-tone="dark">
 
   <div class="section-grid">
 
@@ -1912,7 +1947,7 @@ p {
 
 <!-- Transformation -->
 
-<section class="section transformation">
+<section class="section transformation" data-tone="dark">
 
   <div>
 
@@ -2010,11 +2045,20 @@ p {
 
   const slideDuration = 8000;
 
+  let slidesPaused = false;
+  let hoveringSlider = false;
+
 
   function formatNumber(number) {
 
     return String(number)
       .padStart(2, "0");
+  }
+
+
+  function slidesHeld() {
+
+    return slidesPaused || hoveringSlider;
   }
 
 
@@ -2029,6 +2073,9 @@ p {
     progressBar.classList.add(
       "is-running"
     );
+
+    progressBar.style.animationPlayState =
+      slidesHeld() ? "paused" : "running";
   }
 
 
@@ -2113,6 +2160,10 @@ p {
       slideTimer
     );
 
+    if (slidesHeld()) {
+      return;
+    }
+
     slideTimer =
       window.setInterval(
         nextSlide,
@@ -2137,6 +2188,8 @@ p {
     "pointerenter",
     function () {
 
+      hoveringSlider = true;
+
       window.clearInterval(
         slideTimer
       );
@@ -2151,9 +2204,44 @@ p {
     "pointerleave",
     function () {
 
-      progressBar.style.animationPlayState =
-        "running";
+      hoveringSlider = false;
 
+      restartProgress();
+      restartTimer();
+    }
+  );
+
+
+  const toggleButton =
+    document.getElementById("toggle-slideshow");
+
+  const pauseIcon =
+    toggleButton.querySelector(".icon-pause");
+
+  const playIcon =
+    toggleButton.querySelector(".icon-play");
+
+  function updateToggleButton() {
+
+    toggleButton.setAttribute(
+      "aria-label",
+      slidesPaused
+        ? "Play slideshow"
+        : "Pause slideshow"
+    );
+
+    pauseIcon.hidden = slidesPaused;
+    playIcon.hidden = !slidesPaused;
+  }
+
+
+  toggleButton.addEventListener(
+    "click",
+    function () {
+
+      slidesPaused = !slidesPaused;
+
+      updateToggleButton();
       restartProgress();
       restartTimer();
     }
@@ -2211,8 +2299,73 @@ p {
   );
 
 
+  updateToggleButton();
   restartProgress();
   restartTimer();
+
+
+  /* Header tone: light text while over a dark-background section */
+
+  const installationHeader =
+    document.querySelector(".installation-ui");
+
+  const darkSections =
+    Array.from(
+      document.querySelectorAll('[data-tone="dark"]')
+    );
+
+  let toneFrame = null;
+
+  function updateHeaderTone() {
+
+    toneFrame = null;
+
+    const probeY =
+      installationHeader.offsetHeight / 2;
+
+    const onDark =
+      darkSections.some(
+        function (section) {
+
+          const rect =
+            section.getBoundingClientRect();
+
+          return (
+            rect.top <= probeY &&
+            rect.bottom > probeY
+          );
+        }
+      );
+
+    installationHeader.classList.toggle(
+      "is-on-dark",
+      onDark
+    );
+  }
+
+  function requestToneUpdate() {
+
+    if (toneFrame === null) {
+
+      toneFrame =
+        requestAnimationFrame(
+          updateHeaderTone
+        );
+    }
+  }
+
+  window.addEventListener(
+    "scroll",
+    requestToneUpdate,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    requestToneUpdate
+  );
+
+  updateHeaderTone();
 
 
   /* Hidden installation controls */
@@ -2223,11 +2376,17 @@ p {
 
   const scrollSpeed = 18;
 
+  /* Fractional scroll target; avoids sub-pixel steps being dropped */
+  let scrollPosition = 0;
+  let endTimeout = null;
+
 
   function stopPlayback() {
 
     playing = false;
     previousTime = null;
+
+    window.clearTimeout(endTimeout);
 
 
     if (animationFrame) {
@@ -2245,6 +2404,9 @@ p {
 
     playing = true;
     previousTime = null;
+
+    scrollPosition = window.scrollY;
+    window.clearTimeout(endTimeout);
 
     animationFrame =
       requestAnimationFrame(
@@ -2283,10 +2445,24 @@ p {
     previousTime = time;
 
 
-    window.scrollBy({
-      top: scrollSpeed * elapsed,
+    /* Follow manual scrolling by the user */
+    if (
+      Math.abs(
+        window.scrollY - scrollPosition
+      ) > 2
+    ) {
+
+      scrollPosition = window.scrollY;
+    }
+
+    scrollPosition +=
+      scrollSpeed * elapsed;
+
+    /* "instant" overrides html { scroll-behavior: smooth } */
+    window.scrollTo({
+      top: scrollPosition,
       left: 0,
-      behavior: "auto"
+      behavior: "instant"
     });
 
 
@@ -2302,7 +2478,7 @@ p {
       stopPlayback();
 
 
-      window.setTimeout(
+      endTimeout = window.setTimeout(
         function () {
 
           window.scrollTo({
@@ -2331,12 +2507,19 @@ p {
     function (event) {
 
       const key =
-        event.key.toLowerCase();
+        (event.key || "").toLowerCase();
+
+      /* Let Space activate focused buttons and links */
+      const onControl =
+        event.target.closest &&
+        event.target.closest(
+          "button, a, input, select, textarea"
+        );
 
 
       if (
         key === "p" ||
-        event.code === "Space"
+        (event.code === "Space" && !onControl)
       ) {
 
         event.preventDefault();
