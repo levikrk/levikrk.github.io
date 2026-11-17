@@ -38,6 +38,8 @@ div { color: rgb(0, 0, 0); font-size: 0.8em; line-height: 2; margin-left: 10%; m
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 [id] { scroll-margin-top: 1em; }
-nav h3 { margin-left: 2.5%; margin-top: 5%; margin-bottom: 1%; }
+nav h3 { color: rgb(0, 0, 0); font-size: 1em; margin-left: 2.5%; margin-top: 5%; margin-bottom: 1%; }
+nav a { text-decoration-line: none; }
+nav a:hover { text-decoration-line: line-through; }
 @media (max-width: 600px) { nav h3 { margin-left: 0; } }
 p.section-title { text-indent: 0; text-align: left; margin-top: 3em; }
