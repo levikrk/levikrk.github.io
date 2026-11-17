@@ -181,8 +181,7 @@ p {
 
 
 /* Section headings sit in the label/row styling, not heading defaults */
-.section-label h2,
-.operations-header h2 {
+.section-label h2 {
   margin: 0;
 
   font: inherit;
@@ -787,73 +786,14 @@ p {
 }
 
 
-.operations-header {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    3fr;
-
-  gap: 3.75rem;
-
-  padding-bottom: 1.75rem;
-
-  border-bottom:
-    var(--rule-weight)
-    solid
-    var(--rule-dark);
-}
 
 
-.operation {
-  display: grid;
-
-  grid-template-columns:
-    minmax(3.5rem, 0.45fr)
-    minmax(11rem, 1fr)
-    minmax(0, 2.2fr);
-
-  gap:
-    clamp(1.5rem, 4vw, 4.5rem);
-
-  padding:
-    1.6rem
-    0
-    3.75rem;
-
-  border-bottom:
-    var(--rule-weight)
-    solid
-    var(--rule-dark);
-}
 
 
-.operation-number {
-  color: var(--dark-muted);
-}
 
 
-.operation h3 {
-  margin: 0;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-body);
-  font-weight: 400;
-
-  line-height: 1.4;
-}
 
 
-.operation p {
-  max-width: 48rem;
-
-  margin: 0;
-
-  color: var(--dark-muted);
-}
 
 
 /* =========================================================
@@ -1052,8 +992,7 @@ p {
   }
 
 
-  .constellation-item,
-  .operation {
+  .constellation-item {
     grid-template-columns:
       2.75rem
       minmax(9rem, 0.9fr)
@@ -1204,16 +1143,14 @@ p {
   }
 
 
-  .constellation-item,
-  .operation {
+  .constellation-item {
     grid-template-columns:
       2.25rem
       minmax(0, 1fr);
   }
 
 
-  .constellation-item p,
-  .operation p {
+  .constellation-item p {
     grid-column: 2;
   }
 
@@ -1222,11 +1159,6 @@ p {
     grid-template-columns: 1fr;
 
     gap: 2rem;
-  }
-
-
-  .operations-header {
-    grid-template-columns: 1fr;
   }
 
 
@@ -1270,8 +1202,7 @@ p {
   }
 
 
-  .constellation-item,
-  .operation {
+  .constellation-item {
     grid-template-columns:
       1.8rem
       minmax(0, 1fr);
@@ -1881,72 +1812,75 @@ p {
 
 <section class="section operations">
 
-  <div class="operations-header">
+  <div class="section-grid constellation-intro">
 
-    <div class="small-text">
-      <h2>05 / Research operations</h2>
+    <div class="section-label small-text">
+      <h2>
+        <span class="section-number">05</span>
+        Research operations
+      </h2>
     </div>
 
-    <div class="small-text">
+    <div class="body-text">
       Five modes through which the material is encountered
     </div>
 
   </div>
 
 
-  <article class="operation">
-    <div class="operation-number small-text">01</div>
-    <h3>Assemblage</h3>
-    <p class="body-text">
-      Bodily procedures, choreographed ensembles,
+  <div class="constellation-list">
+
+    <article class="constellation-item">
+      <div class="constellation-number small-text">05.1</div>
+      <h3>Assemblage</h3>
+      <p class="body-text">      Bodily procedures, choreographed ensembles,
       cultural tools, historical references and material
       experiments are brought into provisional proximity.
-    </p>
-  </article>
+    
+      </p>
+    </article>
 
-
-  <article class="operation">
-    <div class="operation-number small-text">02</div>
-    <h3>Prop-objects</h3>
-    <p class="body-text">
-      Equipment, cultural tool, prop, artefact and newly
+    <article class="constellation-item">
+      <div class="constellation-number small-text">05.2</div>
+      <h3>Prop-objects</h3>
+      <p class="body-text">      Equipment, cultural tool, prop, artefact and newly
       made object remain overlapping and unstable
       categories rather than resolving into a single identity.
-    </p>
-  </article>
+    
+      </p>
+    </article>
 
-
-  <article class="operation">
-    <div class="operation-number small-text">03</div>
-    <h3>Bodily procedures</h3>
-    <p class="body-text">
-      Repetition, resistance, posture, leverage and movement
+    <article class="constellation-item">
+      <div class="constellation-number small-text">05.3</div>
+      <h3>Bodily procedures</h3>
+      <p class="body-text">      Repetition, resistance, posture, leverage and movement
       position the body as both a site of interpretation
       and an instrument of cultural reproduction.
-    </p>
-  </article>
+    
+      </p>
+    </article>
 
-
-  <article class="operation">
-    <div class="operation-number small-text">04</div>
-    <h3>Transmission</h3>
-    <p class="body-text">
-      Tradition is approached as a field of transfer,
+    <article class="constellation-item">
+      <div class="constellation-number small-text">05.4</div>
+      <h3>Transmission</h3>
+      <p class="body-text">      Tradition is approached as a field of transfer,
       institutionalisation, reconstruction, conflict and
       continuing transformation rather than static survival.
-    </p>
-  </article>
+    
+      </p>
+    </article>
 
-
-  <article class="operation">
-    <div class="operation-number small-text">05</div>
-    <h3>Translation</h3>
-    <p class="body-text">
-      Objects move between physical procedure, fabricated
+    <article class="constellation-item">
+      <div class="constellation-number small-text">05.5</div>
+      <h3>Translation</h3>
+      <p class="body-text">      Objects move between physical procedure, fabricated
       form, representation, archive, digital object and
       circulating platform image.
-    </p>
-  </article>
+    
+      </p>
+    </article>
+
+  </div>
 
 </section>
 
