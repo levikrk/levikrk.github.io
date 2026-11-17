@@ -32,14 +32,10 @@
 :root {
   --light: #FAFAF9;
   --dark: #44403B;
-  --dark-background: #666666;
 
-  /* Solid colours: translucent text fell below contrast minimums */
-  --light-muted: #E8E7E4;
   --dark-muted: #6B675F;
 
   --rule-weight: 1px;
-  --rule-light: rgba(250,250,249,0.24);
   --rule-dark: rgba(68,64,59,0.24);
 
   --type-small: clamp(0.68rem, 0.7vw, 0.78rem);
@@ -232,11 +228,6 @@ p {
 }
 
 
-/* Switched by script while over a dark-background section */
-.installation-ui.is-on-dark {
-  color: var(--light);
-}
-
 
 .channel-description,
 .channel {
@@ -344,8 +335,8 @@ p {
 
   overflow: hidden;
 
-  background: var(--dark-background);
-  color: var(--light);
+  background: var(--light);
+  color: var(--dark);
 
   touch-action: pan-y;
 }
@@ -429,7 +420,7 @@ p {
   grid-column: 1;
   grid-row: 1;
 
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -443,7 +434,7 @@ p {
 
   margin: 0;
 
-  color: var(--light);
+  color: var(--dark);
 }
 
 
@@ -453,7 +444,7 @@ p {
 
   max-width: 41rem;
 
-  color: var(--light);
+  color: var(--dark);
 }
 
 
@@ -466,7 +457,7 @@ p {
   display: grid;
   gap: 0.45rem;
 
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -496,12 +487,12 @@ p {
   align-items: baseline;
   gap: 0.45rem;
 
-  color: var(--light);
+  color: var(--dark);
 }
 
 
 .counter-total {
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -525,12 +516,12 @@ p {
   border:
     var(--rule-weight)
     solid
-    var(--rule-light);
+    var(--rule-dark);
 
   border-radius: 50%;
 
   background: transparent;
-  color: var(--light);
+  color: var(--dark);
 
   cursor: pointer;
 }
@@ -538,8 +529,8 @@ p {
 
 .slider-button:hover,
 .slider-button:focus-visible {
-  background: var(--light);
-  color: var(--dark-background);
+  background: var(--dark);
+  color: var(--light);
 
   outline: none;
 }
@@ -568,7 +559,7 @@ p {
 
   height: 2px;
 
-  background: var(--rule-light);
+  background: var(--rule-dark);
 }
 
 
@@ -576,7 +567,7 @@ p {
   width: 0;
   height: 100%;
 
-  background: var(--light);
+  background: var(--dark);
 }
 
 
@@ -699,13 +690,13 @@ p {
 ========================================================= */
 
 .methodology {
-  background: var(--dark-background);
-  color: var(--light);
+  background: var(--light);
+  color: var(--dark);
 }
 
 
 .methodology .section-label {
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -725,12 +716,12 @@ p {
   margin-top:
     clamp(4rem, 10vh, 7rem);
 
-  background: var(--rule-light);
+  background: var(--rule-dark);
 
   border:
     var(--rule-weight)
     solid
-    var(--rule-light);
+    var(--rule-dark);
 }
 
 
@@ -746,12 +737,12 @@ p {
     1fr
     auto;
 
-  background: var(--dark-background);
+  background: var(--light);
 }
 
 
 .method-card-number {
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -776,7 +767,7 @@ p {
 
   margin: 0;
 
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -906,8 +897,8 @@ p {
   display: grid;
   align-content: center;
 
-  background: var(--dark-background);
-  color: var(--light);
+  background: var(--light);
+  color: var(--dark);
 }
 
 
@@ -915,7 +906,7 @@ p {
   margin-bottom:
     clamp(3rem, 8vh, 5rem);
 
-  color: var(--light-muted);
+  color: var(--dark-muted);
 }
 
 
@@ -934,7 +925,7 @@ p {
 
 
 .transformation-arrow {
-  color: var(--light-muted);
+  color: var(--dark-muted);
 
   font-size: var(--type-body);
 }
@@ -1418,7 +1409,7 @@ p {
 <section
   class="research-slider"
   id="research-slider"
-  data-tone="dark"
+ 
   aria-label="Research themes slideshow"
 >
 
@@ -1779,7 +1770,7 @@ p {
 
 <!-- Methodology -->
 
-<section class="section methodology" data-tone="dark">
+<section class="section methodology">
 
   <div class="section-grid">
 
@@ -1970,7 +1961,7 @@ p {
 
 <!-- Transformation -->
 
-<section class="section transformation" data-tone="dark">
+<section class="section transformation">
 
   <div>
 
@@ -2335,70 +2326,6 @@ p {
   updateToggleButton();
   restartProgress();
   restartTimer();
-
-
-  /* Header tone: light text while over a dark-background section */
-
-  const installationHeader =
-    document.querySelector(".installation-ui");
-
-  const darkSections =
-    Array.from(
-      document.querySelectorAll('[data-tone="dark"]')
-    );
-
-  let toneFrame = null;
-
-  function updateHeaderTone() {
-
-    toneFrame = null;
-
-    const probeY =
-      installationHeader.offsetHeight / 2;
-
-    const onDark =
-      darkSections.some(
-        function (section) {
-
-          const rect =
-            section.getBoundingClientRect();
-
-          return (
-            rect.top <= probeY &&
-            rect.bottom > probeY
-          );
-        }
-      );
-
-    installationHeader.classList.toggle(
-      "is-on-dark",
-      onDark
-    );
-  }
-
-  function requestToneUpdate() {
-
-    if (toneFrame === null) {
-
-      toneFrame =
-        requestAnimationFrame(
-          updateHeaderTone
-        );
-    }
-  }
-
-  window.addEventListener(
-    "scroll",
-    requestToneUpdate,
-    { passive: true }
-  );
-
-  window.addEventListener(
-    "resize",
-    requestToneUpdate
-  );
-
-  updateHeaderTone();
 
 
   /* Hidden installation controls */
