@@ -129,7 +129,6 @@ p {
 
 .display-text,
 .method-statement,
-.transformation-item,
 .closing-statement {
   font-family:
     "Inter",
@@ -817,39 +816,27 @@ p {
 }
 
 
-.transformation-chain {
-  max-width: 96rem;
-
-  display: flex;
-  flex-wrap: wrap;
-
-  align-items: baseline;
-
-  gap:
-    1rem
-    1.25rem;
-}
 
 
-.transformation-arrow {
-  color: var(--dark-muted);
-
-  font-size: var(--type-body);
-}
 
 
-/* Transformation chain uses the opening subtitle's type style */
+/* Transformation diagram: monospaced, scales with the page */
 
-.transformation-item {
+.transformation-diagram {
+  margin: 0;
+  max-width: 100%;
+
   font-family:
     "Roboto Mono",
     monospace;
 
-  font-size: var(--type-body);
+  font-size: clamp(0.7rem, 1.4vw, 1rem);
   font-weight: 400;
 
   line-height: 1.5;
-  letter-spacing: -0.02em;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
 }
 
 
@@ -922,7 +909,6 @@ p {
 
   .display-text,
   .method-statement,
-  .transformation-item,
   .closing-statement {
     line-height: 0.96;
     letter-spacing: -0.04em;
@@ -1035,7 +1021,6 @@ p {
 
   .display-text,
   .method-statement,
-  .transformation-item,
   .closing-statement {
     line-height: 1;
     letter-spacing: -0.035em;
@@ -1906,29 +1891,56 @@ p {
     </div>
 
 
-    <div class="transformation-chain">
+    <pre class="transformation-diagram">            INHERITED FORM
+  motifs · performances · objects
+  · environments
+  remade through labour, institutions,
+  exchange and contested value
+                  │
+                  ▼
+            BODILY PROCEDURE
+  repetition · posture · resistance
+  · leverage
+  learned by practice, handed on
+  through the body
+                  │
+                  ▼
+             CULTURAL TOOL
+  apparatus · equipment · instrument
+  in use; function, meaning and
+  legitimacy in dispute
+                  │
+                  ▼
+              PROP-OBJECT
+  dissected · rescaled · re-weighted
+  re-materialised
+  ├─ dissection
+  ├─ reimagination
+  └─ construction
+                  │
+                  ▼
+                 MAKING
+  iterative fabrication; the object
+  reborn as a novel physical form
+                  │
+                  ▼
+                 IMAGE
+  photograph · record · archive
+  the object made representable
+  and circulable
+                  │
+                  ▼
+           DIGITAL CIRCULATION
+  platforms · feeds · heritage regimes
+  · markets
+  images travel, change and are
+  recontextualised
+                  │
+                  └── re-enters as a new
+                      inherited form ↺
 
-      <span class="transformation-item">inherited form</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">bodily procedure</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">cultural tool</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">prop-object</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">making</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">image</span>
-      <span class="transformation-arrow">→</span>
-
-      <span class="transformation-item">digital circulation</span>
-
-    </div>
+  forces through every step:
+  labour · institution · exchange · value</pre>
 
   </div>
 
