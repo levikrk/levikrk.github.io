@@ -39,7 +39,7 @@
   --type-body: clamp(0.95rem, 1.25vw, 1.2rem);
 
   /* 20% reduction from original display scale */
-  --type-display: clamp(1.9rem, 2.5vw, 2.4rem);
+  --type-display: clamp(2.85rem, 3.75vw, 3.6rem);
 
   --page-x: clamp(1.25rem, 3.25vw, 3.5rem);
   --section-y: clamp(5.5rem, 12vh, 10rem);
@@ -907,7 +907,7 @@ p {
     --type-body: clamp(0.98rem, 1.7vw, 1.12rem);
 
     --type-display:
-      clamp(1.96rem, 3.4vw, 2.24rem);
+      clamp(2.94rem, 5.1vw, 3.36rem);
 
     --page-x:
       clamp(1.75rem, 4vw, 3rem);
@@ -1021,7 +1021,7 @@ p {
       clamp(0.92rem, 3.7vw, 1.02rem);
 
     --type-display:
-      clamp(1.84rem, 7.4vw, 2.04rem);
+      clamp(2.76rem, 11.1vw, 3.06rem);
 
     --page-x: 1.25rem;
 
@@ -1171,6 +1171,17 @@ p {
 }
 
 
+/* Very narrow phones: allow the title to wrap rather than overflow */
+
+@media (max-width: 360px) {
+
+  .opening-title h1 {
+    white-space: normal;
+  }
+
+}
+
+
 /* =========================================================
    SMALL MOBILE
 ========================================================= */
@@ -1181,7 +1192,7 @@ p {
     --type-small: 0.64rem;
     --type-body: 0.9rem;
 
-    --type-display: 1.8rem;
+    --type-display: 2.7rem;
 
     --page-x: 1rem;
   }
