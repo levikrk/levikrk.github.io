@@ -32,3 +32,11 @@ div { color: rgb(0, 0, 0); font-size: 0.8em; line-height: 2; margin-left: 10%; m
   a { display: inline-block; margin: 0.15em 0; padding: 0.35em 0; line-height: 1.5; }
   div { margin-left: 0; }
 }
+
+
+/* In-page navigation */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+[id] { scroll-margin-top: 1em; }
+nav h3 { margin-left: 2.5%; margin-top: 5%; margin-bottom: 1%; }
+@media (max-width: 600px) { nav h3 { margin-left: 0; } }
