@@ -40,3 +40,4 @@ html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: 1em; }
 nav h3 { margin-left: 2.5%; margin-top: 5%; margin-bottom: 1%; }
 @media (max-width: 600px) { nav h3 { margin-left: 0; } }
+p.section-title { text-indent: 0; text-align: left; margin-top: 3em; }
