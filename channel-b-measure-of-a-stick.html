@@ -738,69 +738,9 @@ p {
 }
 
 
-.method-details {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: var(--rule-weight);
-
+.method-list {
   margin-top:
     clamp(4rem, 10vh, 7rem);
-
-  background: var(--rule-dark);
-
-  border:
-    var(--rule-weight)
-    solid
-    var(--rule-dark);
-}
-
-
-.method-card {
-  min-height: 20rem;
-
-  padding: 1.75rem;
-
-  display: grid;
-
-  grid-template-rows:
-    auto
-    1fr
-    auto;
-
-  background: var(--light);
-}
-
-
-.method-card-number {
-  color: var(--dark-muted);
-}
-
-
-.method-card h3 {
-  align-self: center;
-
-  margin: 0;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-body);
-  font-weight: 400;
-
-  line-height: 1.4;
-}
-
-
-.method-card p {
-  max-width: 25rem;
-
-  margin: 0;
-
-  color: var(--dark-muted);
 }
 
 
@@ -1281,11 +1221,6 @@ p {
   .constellation-item p,
   .operation p {
     grid-column: 2;
-  }
-
-
-  .method-details {
-    grid-template-columns: 1fr;
   }
 
 
@@ -1841,10 +1776,10 @@ p {
       </div>
 
 
-      <div class="method-details">
+      <div class="method-list">
 
-        <article class="method-card">
-          <div class="method-card-number small-text">01</div>
+        <article class="constellation-item">
+          <div class="constellation-number small-text">03.1</div>
           <h3>Dissection</h3>
           <p class="body-text">
             Existing procedures and objects are treated
@@ -1854,8 +1789,8 @@ p {
         </article>
 
 
-        <article class="method-card">
-          <div class="method-card-number small-text">02</div>
+        <article class="constellation-item">
+          <div class="constellation-number small-text">03.2</div>
           <h3>Reimagination</h3>
           <p class="body-text">
             Practical and symbolic relationships are
@@ -1865,8 +1800,8 @@ p {
         </article>
 
 
-        <article class="method-card">
-          <div class="method-card-number small-text">03</div>
+        <article class="constellation-item">
+          <div class="constellation-number small-text">03.3</div>
           <h3>Material transformation</h3>
           <p class="body-text">
             Making becomes an iterative mode of inquiry
