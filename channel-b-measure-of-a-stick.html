@@ -856,6 +856,11 @@ p {
 }
 
 
+.closing-spacer {
+  display: block;
+}
+
+
 .closing-statement {
   align-self: center;
 
@@ -1056,6 +1061,11 @@ p {
 
   .opening-note {
     justify-self: start;
+  }
+
+
+  .closing-spacer {
+    display: none;
   }
 
 
@@ -1899,9 +1909,18 @@ p {
 
 <footer class="closing">
 
-  <div class="closing-statement">
-    It is within this field of transformations
-    that <em>Measure of a Stick</em> begins.
+  <div class="section-grid closing-grid">
+
+    <div
+      class="closing-spacer"
+      aria-hidden="true"
+    ></div>
+
+    <div class="closing-statement">
+      It is within this field of transformations
+      that <em>Measure of a Stick</em> begins.
+    </div>
+
   </div>
 
 
