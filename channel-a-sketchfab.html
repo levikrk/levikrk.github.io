@@ -10,13 +10,13 @@
 
 <title>Hojo Undo 補助運動</title>
 
-<!-- Google Fonts: Roboto + Roboto Mono -->
+<!-- Google Fonts: Inter 600 (display) + Roboto Mono (text) -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap"
   rel="stylesheet"
 >
 
@@ -25,29 +25,27 @@
 
 /* =========================================================
    GLOBAL
+   Visual principles aligned with Channel B
+   (Measure of a Stick)
 ========================================================= */
 
 :root {
-  --light: #FAFAF9;
-  --dark: #44403B;
+  --light: #FFEEE7;
+  --dark: #000000;
 
-  --dark-muted: rgba(68,64,59,0.62);
-  --dark-subtle: rgba(68,64,59,0.42);
+  --dark-muted: var(--dark);
+  --dark-subtle: rgba(0,0,0,0.42);
 
   --rule-weight: 1px;
   --rule-dark: rgba(68,64,59,0.24);
 
-  --type-small:
-    clamp(0.68rem, 0.7vw, 0.78rem);
+  --type-small: clamp(0.68rem, 0.7vw, 0.78rem);
+  --type-body: clamp(0.95rem, 1.25vw, 1.2rem);
 
-  --type-body:
-    clamp(0.95rem, 1.25vw, 1.2rem);
+  /* Same display scale as Channel B */
+  --type-display: clamp(2.85rem, 3.75vw, 3.6rem);
 
-  --type-display:
-    clamp(2.4rem, 6.8vw, 7.2rem);
-
-  --page-x:
-    clamp(1.25rem, 3.25vw, 3.5rem);
+  --page-x: clamp(1.25rem, 3.25vw, 3.5rem);
 }
 
 
@@ -89,6 +87,35 @@ p {
 }
 
 
+::selection {
+  background: var(--dark);
+  color: var(--light);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+
+   Display text: Inter 600
+   Other text: Roboto Mono 400
+========================================================= */
+
+.display-text {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif;
+
+  font-size: var(--type-display);
+  font-weight: 600;
+
+  line-height: 1.2;
+  letter-spacing: 0em;
+
+  overflow-wrap: anywhere;
+}
+
+
 /* =========================================================
    SKETCHFAB VIEWER
 ========================================================= */
@@ -114,11 +141,11 @@ p {
 /* =========================================================
    LIGHT GRADIENT OVERLAY
 
-   Solid #FAFAF9 at left.
-   Fully transparent at 25%.
+   Solid #FFEEE7 at left.
+   Fully transparent at 50%.
 
    To change where transparency is complete,
-   change the final "25%" value below.
+   change the final "50%" value below.
 ========================================================= */
 
 .viewer-gradient {
@@ -130,8 +157,8 @@ p {
   background:
     linear-gradient(
       90deg,
-      #FAFAF9 0%,
-      rgba(250,250,249,0) 25%
+      #FFEEE7 0%,
+      rgba(255,238,231,0) 50%
     );
 
   pointer-events: none;
@@ -140,6 +167,8 @@ p {
 
 /* =========================================================
    FIXED CHANNEL HEADER
+
+   No mix-blend-mode.
 ========================================================= */
 
 .installation-ui {
@@ -165,7 +194,7 @@ p {
 
   color: var(--dark);
 
-  mix-blend-mode: normal;
+  transition: color 300ms ease;
 
   pointer-events: none;
 }
@@ -181,9 +210,9 @@ p {
   font-weight: 400;
 
   line-height: 1.4;
-  letter-spacing: 0.035em;
+  letter-spacing: 0em;
 
-  color: var(--dark);
+  color: #FF0000;
 }
 
 
@@ -224,17 +253,6 @@ h1 {
   max-width: 80rem;
 
   margin: 0;
-
-  font-family:
-    "Roboto",
-    Arial,
-    sans-serif;
-
-  font-size: var(--type-display);
-  font-weight: 400;
-
-  line-height: 0.94;
-  letter-spacing: -0.045em;
 }
 
 
@@ -251,17 +269,17 @@ h1 {
   margin-top: 0.65rem;
 
   font-family:
-    "Roboto",
+    "Inter",
     Arial,
     sans-serif;
 
   font-size: 0.36em;
-  font-weight: 400;
+  font-weight: 600;
 
   line-height: 1.2;
-  letter-spacing: 0.07em;
+  letter-spacing: 0em;
 
-  color: var(--dark-muted);
+  color: var(--dark);
 }
 
 
@@ -316,8 +334,8 @@ h1 {
   font-size: var(--type-body);
   font-weight: 400;
 
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  line-height: 1.65;
+  letter-spacing: 0em;
 
   color: var(--dark);
 }
@@ -348,17 +366,15 @@ h1 {
   font-weight: 400;
 
   line-height: 1.4;
-  letter-spacing: 0.035em;
+  letter-spacing: 0em;
+
+  color: #FF0000;
 }
 
 
-.metadata .label {
-  color: var(--dark-subtle);
-}
-
-
+.metadata .label,
 .metadata .value {
-  color: var(--dark-muted);
+  color: #FF0000;
 }
 
 
@@ -388,9 +404,9 @@ h1 {
   font-weight: 400;
 
   line-height: 1.4;
-  letter-spacing: 0.035em;
+  letter-spacing: 0em;
 
-  color: var(--dark-muted);
+  color: #FF0000;
 
   pointer-events: none;
 }
@@ -399,7 +415,7 @@ h1 {
 .guide-title {
   margin-bottom: 0.9rem;
 
-  color: var(--dark);
+  color: #FF0000;
 }
 
 
@@ -419,13 +435,9 @@ h1 {
 }
 
 
-.guide-input {
-  color: var(--dark-subtle);
-}
-
-
+.guide-input,
 .guide-action {
-  color: var(--dark-muted);
+  color: #FF0000;
 }
 
 
@@ -446,7 +458,7 @@ h1 {
       clamp(0.98rem, 1.7vw, 1.12rem);
 
     --type-display:
-      clamp(3.04rem, 6.56vw, 5.28rem);
+      clamp(2.94rem, 5.1vw, 3.36rem);
 
     --page-x:
       clamp(1.75rem, 4vw, 3rem);
@@ -466,7 +478,7 @@ h1 {
   .metadata,
   .viewer-guide {
     line-height: 1.45;
-    letter-spacing: 0.03em;
+    letter-spacing: 0em;
   }
 
 
@@ -481,17 +493,6 @@ h1 {
 
   h1 {
     max-width: 58rem;
-
-    line-height: 0.96;
-    letter-spacing: -0.04em;
-  }
-
-
-  .title-kanji {
-    margin-top: 0.55rem;
-
-    font-size: 0.36em;
-    letter-spacing: 0.065em;
   }
 
 
@@ -526,7 +527,7 @@ h1 {
    780px and below
 ========================================================= */
 
-@media (max-width: 780px) {
+@media (max-width: 780.98px) {
 
   :root {
     --type-small: 0.68rem;
@@ -535,7 +536,7 @@ h1 {
       clamp(0.92rem, 3.7vw, 1.02rem);
 
     --type-display:
-      clamp(2.04rem, 9.6vw, 4.32rem);
+      clamp(2.76rem, 11.1vw, 3.06rem);
 
     --page-x: 1.25rem;
   }
@@ -560,7 +561,7 @@ h1 {
   .metadata,
   .viewer-guide {
     line-height: 1.45;
-    letter-spacing: 0.025em;
+    letter-spacing: 0em;
   }
 
 
@@ -574,8 +575,7 @@ h1 {
 
 
   h1 {
-    line-height: 1;
-    letter-spacing: -0.035em;
+    line-height: 1.2;
   }
 
 
@@ -585,7 +585,6 @@ h1 {
     font-size: 0.36em;
 
     line-height: 1.2;
-    letter-spacing: 0.06em;
   }
 
 
@@ -710,8 +709,7 @@ h1 {
     --type-small: 0.64rem;
     --type-body: 0.9rem;
 
-    --type-display:
-      clamp(1.84rem, 9.2vw, 2.72rem);
+    --type-display: 2.7rem;
 
     --page-x: 1rem;
   }
@@ -844,7 +842,7 @@ h1 {
 
 
 <!-- =========================================================
-     #FAFAF9 GRADIENT OVERLAY
+     #FFEEE7 GRADIENT OVERLAY
 ========================================================= -->
 
 <div
@@ -879,7 +877,7 @@ h1 {
 
 <header class="work-title">
 
-  <h1>
+  <h1 class="display-text">
 
     <span class="title-main">
       Hojo Undo
