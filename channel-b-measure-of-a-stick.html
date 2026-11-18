@@ -42,8 +42,8 @@
   --type-small: calc(var(--type-body) * 0.68);
   --type-body: clamp(0.95rem, 1.25vw, 1.2rem);
 
-  /* Size relations: small = 0.68 x body, display = 2.5 x body */
-  --type-display: calc(var(--type-body) * 2.5);
+  /* Size relations: small = 0.68 x body, display = 2.25 x body (desktop, tablet) */
+  --type-display: calc(var(--type-body) * 2.25);
 
   --page-x: clamp(1.25rem, 3.25vw, 3.5rem);
   --section-y: clamp(5.5rem, 12vh, 10rem);
@@ -952,7 +952,7 @@ p {
     --type-small: calc(var(--type-body) * 0.68);
     --type-body: clamp(0.98rem, 1.7vw, 1.12rem);
 
-    --type-display: calc(var(--type-body) * 2.5);
+    --type-display: calc(var(--type-body) * 2.25);
 
     --page-x:
       clamp(1.75rem, 4vw, 3rem);
