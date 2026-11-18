@@ -39,11 +39,11 @@
   --rule-weight: 1px;
   --rule-dark: rgba(68,64,59,0.24);
 
-  --type-small: clamp(0.68rem, 0.7vw, 0.78rem);
+  --type-small: calc(var(--type-body) * 0.68);
   --type-body: clamp(0.95rem, 1.25vw, 1.2rem);
 
-  /* 20% reduction from original display scale */
-  --type-display: 2.5rem;
+  /* Size relations: small = 0.68 x body, display = 2.5 x body */
+  --type-display: calc(var(--type-body) * 2.5);
 
   --page-x: clamp(1.25rem, 3.25vw, 3.5rem);
   --section-y: clamp(5.5rem, 12vh, 10rem);
@@ -950,10 +950,10 @@ p {
 @media (min-width: 781px) and (max-width: 1180px) {
 
   :root {
-    --type-small: 0.72rem;
+    --type-small: calc(var(--type-body) * 0.68);
     --type-body: clamp(0.98rem, 1.7vw, 1.12rem);
 
-    --type-display: 2.5rem;
+    --type-display: calc(var(--type-body) * 2.5);
 
     --page-x:
       clamp(1.75rem, 4vw, 3rem);
@@ -1061,11 +1061,11 @@ p {
 @media (max-width: 780.98px) {
 
   :root {
-    --type-small: 0.68rem;
+    --type-small: calc(var(--type-body) * 0.68);
     --type-body:
       clamp(0.92rem, 3.7vw, 1.02rem);
 
-    --type-display: 2.5rem;
+    --type-display: calc(var(--type-body) * 2.5);
 
     --page-x: 1.25rem;
 
@@ -1226,10 +1226,10 @@ p {
 @media (max-width: 390px) {
 
   :root {
-    --type-small: 0.64rem;
+    --type-small: calc(var(--type-body) * 0.68);
     --type-body: 0.9rem;
 
-    --type-display: 2.5rem;
+    --type-display: calc(var(--type-body) * 2.5);
 
     --page-x: 1rem;
   }
