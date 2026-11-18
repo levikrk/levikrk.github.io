@@ -822,6 +822,12 @@ p {
 
 /* Transformation diagram: monospaced, scales with the page */
 
+/* Let the diagram scroll inside its own box, not widen the page */
+.transformation > div {
+  min-width: 0;
+}
+
+
 .transformation-diagram {
   margin: 0;
   max-width: 100%;
@@ -830,7 +836,7 @@ p {
     "Roboto Mono",
     monospace;
 
-  font-size: clamp(0.7rem, 1.4vw, 1rem);
+  font-size: clamp(0.6rem, 1.4vw, 1rem);
   font-weight: 400;
 
   line-height: 1.5;
@@ -1891,56 +1897,37 @@ p {
     </div>
 
 
-    <pre class="transformation-diagram">            INHERITED FORM
-  motifs · performances · objects
-  · environments
-  remade through labour, institutions,
-  exchange and contested value
-                  │
-                  ▼
-            BODILY PROCEDURE
-  repetition · posture · resistance
-  · leverage
-  learned by practice, handed on
-  through the body
-                  │
-                  ▼
-             CULTURAL TOOL
-  apparatus · equipment · instrument
-  in use; function, meaning and
-  legitimacy in dispute
-                  │
-                  ▼
-              PROP-OBJECT
-  dissected · rescaled · re-weighted
-  re-materialised
-  ├─ dissection
-  ├─ reimagination
-  └─ construction
-                  │
-                  ▼
-                 MAKING
-  iterative fabrication; the object
-  reborn as a novel physical form
-                  │
-                  ▼
-                 IMAGE
-  photograph · record · archive
-  the object made representable
-  and circulable
-                  │
-                  ▼
-           DIGITAL CIRCULATION
-  platforms · feeds · heritage regimes
-  · markets
-  images travel, change and are
-  recontextualised
-                  │
-                  └── re-enters as a new
-                      inherited form ↺
+    <pre class="transformation-diagram">┌────────────┐   ┌────────────┐   ┌────────────┐
+│ 01         │   │ 02         │   │ 03         │
+│ INHERITED  │──▶│ BODILY     │──▶│ CULTURAL   │
+│ FORM       │   │ PROCEDURE  │   │ TOOL       │
+│ motifs     │   │ repetition │   │ apparatus  │
+│ performance│   │ posture    │   │ in use     │
+│ objects    │   │ leverage   │   │ meaning    │
+└────────────┘   └────────────┘   └────────────┘
+                                         │
+                                         ▼
+┌────────────┐   ┌────────────┐   ┌────────────┐
+│ 06         │   │ 05         │   │ 04         │
+│ IMAGE      │◀──│ MAKING     │◀──│ PROP-OBJECT│
+│            │   │            │   │            │
+│ photograph │   │ fabrication│   │ dissected  │
+│ archive    │   │ new form   │   │ rescaled   │
+│ record     │   │ iterative  │   │ re-made    │
+└────────────┘   └────────────┘   └────────────┘
+       │
+       ▼
+┌────────────┐
+│ 07         │
+│ DIGITAL    │   ↺ circulation re-enters
+│ CIRCULATION│     as a new inherited form
+│ platforms  │
+│ feeds      │
+│ markets    │
+└────────────┘
 
-  forces through every step:
-  labour · institution · exchange · value</pre>
+forces through every step:
+labour · institution · exchange · value</pre>
 
   </div>
 
