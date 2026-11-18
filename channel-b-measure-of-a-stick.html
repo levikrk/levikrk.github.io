@@ -850,13 +850,17 @@ p {
 /* Transformation diagram: monospaced, scales with the page */
 
 /* Let the diagram scroll inside its own box, not widen the page */
-.transformation > div {
+.transformation > div,
+.transformation-grid > * {
   min-width: 0;
 }
 
 
 .transformation-figure {
-  margin: 0;
+  margin:
+    clamp(3rem, 8vh, 5rem)
+    0
+    0;
 }
 
 
@@ -1959,7 +1963,7 @@ p {
 
 <section class="section transformation">
 
-  <div>
+  <div class="section-grid transformation-grid">
 
     <div class="section-label small-text">
       <h2>06 / A provisional chain of transformations</h2>
