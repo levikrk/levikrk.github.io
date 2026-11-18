@@ -864,7 +864,7 @@ p {
 }
 
 
-.transformation-figure .figure-caption {
+.figure-caption-row .figure-caption {
   margin: 1rem 0 0;
 }
 
@@ -1287,7 +1287,7 @@ p {
 /* Captions: higher specificity so this colour beats the small-text red */
 .image-field .image-caption,
 .subject-col .subject-caption,
-.transformation-figure .figure-caption {
+.figure-caption {
   color: #0800FF;
 }
 </style>
@@ -1963,14 +1963,13 @@ p {
 
 <section class="section transformation">
 
-  <div class="section-grid transformation-grid">
+  <div>
 
     <div class="section-label small-text">
       <h2>06 / A provisional chain of transformations</h2>
     </div>
 
-
-    <figure class="transformation-figure">
+    <div class="transformation-figure">
 
     <pre class="transformation-diagram">| 01               | 02               | 03         
    inherited         bodily             cultural  
@@ -1993,15 +1992,24 @@ p {
 
 \ forces through every step: labour, institution, exchange, value /</pre>
 
-      <figcaption class="figure-caption small-text">
+    </div>
+
+    <div class="section-grid figure-caption-row">
+
+      <div
+        class="closing-spacer"
+        aria-hidden="true"
+      ></div>
+
+      <div class="figure-caption small-text">
         Figure 3
         <br>
         <em>Transformations from Inherited Form to Digital Circulation</em>
         <br>
         <em>Note.</em> Diagram by the author.
-      </figcaption>
+      </div>
 
-    </figure>
+    </div>
 
   </div>
 
