@@ -274,8 +274,15 @@ p {
 .opening-title h1 {
   max-width: 94rem;
   margin: 0;
+}
 
-  white-space: nowrap;
+
+@media (min-width: 520px) {
+
+  .opening-title h1 {
+    white-space: nowrap;
+  }
+
 }
 
 
@@ -768,6 +775,28 @@ p {
 }
 
 
+.subject-col {
+  display: grid;
+
+  align-content: start;
+
+  gap: 2rem;
+}
+
+
+.subject-figure {
+  margin: 0;
+}
+
+
+.subject-figure img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
 .subject-body p {
   margin: 0;
 
@@ -1160,17 +1189,6 @@ p {
 
   .closing-footer {
     flex-direction: column;
-  }
-
-}
-
-
-/* Very narrow phones: allow the title to wrap rather than overflow */
-
-@media (max-width: 360px) {
-
-  .opening-title h1 {
-    white-space: normal;
   }
 
 }
@@ -1783,6 +1801,8 @@ p {
 
       <div class="subject-body">
 
+        <div class="subject-col">
+
         <p class="body-text">
           The research begins with supplementary bodily
           practices distilled through the historical
@@ -1791,6 +1811,18 @@ p {
           posture and repetition while operating
           simultaneously as vehicles of cultural transmission.
         </p>
+
+          <figure class="subject-figure">
+            <img
+              src="images/measure-of-a-stick-2.jpg"
+              alt="Assembled wooden and metal apparatus, with a large stone weight, barrels and a wheel, set in a field in front of a plank fence."
+              width="600"
+              height="356"
+              loading="lazy"
+            >
+          </figure>
+
+        </div>
 
         <p class="body-text">
           Of particular interest is their global transfer
