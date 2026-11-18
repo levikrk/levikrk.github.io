@@ -1269,6 +1269,12 @@ p {
 .counter-total {
   color: #FF0000;
 }
+
+/* Captions: higher specificity so this colour beats the small-text red */
+.image-field .image-caption,
+.subject-col .subject-caption {
+  color: #3C00FF;
+}
 </style>
 </head>
 
