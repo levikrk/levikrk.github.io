@@ -60,6 +60,9 @@ body {
   margin: 0;
   overflow-x: hidden;
 
+  /* Long words break rather than push the page wider */
+  overflow-wrap: anywhere;
+
   background: var(--light);
   color: var(--dark);
 
@@ -276,14 +279,6 @@ p {
   margin: 0;
 }
 
-
-@media (min-width: 520px) {
-
-  .opening-title h1 {
-    white-space: nowrap;
-  }
-
-}
 
 
 .opening-subtitle {
