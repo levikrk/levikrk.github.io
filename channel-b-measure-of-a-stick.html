@@ -1963,8 +1963,6 @@ p {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-  let hoveringSlider = false;
-
 
   function formatNumber(number) {
 
@@ -1975,7 +1973,7 @@ p {
 
   function slidesHeld() {
 
-    return slidesPaused || hoveringSlider;
+    return slidesPaused;
   }
 
 
@@ -2098,34 +2096,6 @@ p {
   nextButton.addEventListener(
     "click",
     nextSlide
-  );
-
-
-  slider.addEventListener(
-    "pointerenter",
-    function () {
-
-      hoveringSlider = true;
-
-      window.clearInterval(
-        slideTimer
-      );
-
-      progressBar.style.animationPlayState =
-        "paused";
-    }
-  );
-
-
-  slider.addEventListener(
-    "pointerleave",
-    function () {
-
-      hoveringSlider = false;
-
-      restartProgress();
-      restartTimer();
-    }
   );
 
 
