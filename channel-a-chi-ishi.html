@@ -242,8 +242,16 @@ p {
   position: absolute;
   z-index: 10;
 
-  top: 50%;
-  transform: translateY(-50%);
+  /* Same region as Channel B's opening title: the block is centred
+     above a reserved footer area (height matches Channel B's footer) */
+  top: max(5rem, env(safe-area-inset-top));
+  bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 121px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 8vh 0;
 
   left: var(--page-x);
   right: var(--page-x);
@@ -519,6 +527,16 @@ h1 {
   }
 
 
+  .work-title {
+    bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 150px);
+  }
+
+
+  .work-subtitle {
+    max-width: 40rem;
+  }
+
+
   .info {
     width:
       min(
@@ -591,6 +609,13 @@ h1 {
 
   h1 {
     line-height: 1.2;
+  }
+
+
+  .work-title {
+    top: max(4.5rem, env(safe-area-inset-top));
+    bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + 67px);
+    padding: 8vh 0;
   }
 
 
