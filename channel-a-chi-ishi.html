@@ -238,99 +238,7 @@ p {
    WORK TITLE
 ========================================================= */
 
-.work-title {
-  position: absolute;
-  z-index: 10;
-
-  /* Same region as Channel B's opening title: the block is centred
-     above a reserved footer area (height matches Channel B's footer) */
-  top: max(5rem, env(safe-area-inset-top));
-  bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 121px);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  padding: 8vh 0;
-
-  left: var(--page-x);
-  right: var(--page-x);
-
-  pointer-events: none;
-}
-
-
-h1 {
-  max-width: 80rem;
-
-  margin: 0;
-}
-
-
-.title-main {
-  display: block;
-
-  color: var(--dark);
-}
-
-
-.title-kanji {
-  display: block;
-
-  margin-top: 0.65rem;
-
-  font-family:
-    "Inter",
-    Arial,
-    sans-serif;
-
-  font-size: 0.36em;
-  font-weight: 600;
-
-  line-height: 1.2;
-  letter-spacing: 0em;
-
-  color: var(--dark);
-}
-
-
 /* Text block under the title: Channel B opening-subtitle and author styles */
-
-.work-subtitle {
-  max-width: 49rem;
-
-  margin-top: 2.75rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-body);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: var(--dark);
-}
-
-
-.work-author {
-  margin-top: 1.25rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-small);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: #0800FF;
-}
-
 
 /* =========================================================
    INFORMATION
@@ -407,76 +315,20 @@ h1 {
   line-height: 1.4;
   letter-spacing: 0em;
 
-  color: #FF0000;
+  color: var(--dark);
 }
 
 
 .metadata .label,
 .metadata .value {
-  color: #FF0000;
+  color: var(--dark);
 }
 
 
-/* =========================================================
-   INTERACTION GUIDE
-========================================================= */
-
-.viewer-guide {
-  position: absolute;
-  z-index: 10;
-
-  right: var(--page-x);
-
-  bottom:
-    max(
-      2rem,
-      env(safe-area-inset-bottom)
-    );
-
-  width: 19rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-small);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: #FF0000;
-
-  pointer-events: none;
-}
-
-
-.guide-title {
-  margin-bottom: 0.9rem;
-
-  color: #FF0000;
-}
-
-
-.guide-row {
-  display: grid;
-
-  grid-template-columns:
-    minmax(8rem, 1.4fr)
-    minmax(0, 0.6fr);
-
-  gap: 0.8rem;
-}
-
-
-.guide-row + .guide-row {
-  margin-top: 0.3rem;
-}
-
-
-.guide-input,
-.guide-action {
-  color: #FF0000;
+/* Gap between the work details and the technical details */
+.metadata .group {
+  grid-column: 1 / -1;
+  height: 0.9rem;
 }
 
 
@@ -514,29 +366,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  .viewer-guide {
-    line-height: 1.4;
-    letter-spacing: 0em;
-  }
-
-
-
-
-  h1 {
-    max-width: 58rem;
-  }
-
-
-  .work-title {
-    bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 150px);
-  }
-
-
-  .work-subtitle {
-    max-width: 40rem;
-  }
-
-
   .info {
     width:
       min(
@@ -555,10 +384,6 @@ h1 {
     max-width: 26rem;
   }
 
-
-  .viewer-guide {
-    width: 18rem;
-  }
 
 }
 
@@ -599,35 +424,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  .viewer-guide {
-    line-height: 1.4;
-    letter-spacing: 0em;
-  }
-
-
-
-
-  h1 {
-    line-height: 1.2;
-  }
-
-
-  .work-title {
-    top: max(4.5rem, env(safe-area-inset-top));
-    bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + 67px);
-    padding: 8vh 0;
-  }
-
-
-  .title-kanji {
-    margin-top: 0.45rem;
-
-    font-size: 0.36em;
-
-    line-height: 1.2;
-  }
-
-
   .info {
     bottom:
       max(
@@ -665,32 +461,6 @@ h1 {
   }
 
 
-  .viewer-guide {
-    right: var(--page-x);
-
-    bottom:
-      max(
-        1.25rem,
-        env(safe-area-inset-bottom)
-      );
-
-    width: 16rem;
-  }
-
-
-  .guide-title {
-    margin-bottom: 0.7rem;
-  }
-
-
-  .guide-row {
-    grid-template-columns:
-      10rem
-      minmax(0, 1fr);
-
-    gap: 0.5rem;
-  }
-
 }
 
 
@@ -717,15 +487,6 @@ h1 {
 
 
 
-
-  .viewer-guide {
-    right: auto;
-    left: var(--page-x);
-
-    bottom: 10.75rem;
-
-    width: 16rem;
-  }
 
 }
 
@@ -760,19 +521,6 @@ h1 {
   }
 
 
-  .viewer-guide {
-    width: 15rem;
-
-    bottom: 10.75rem;
-  }
-
-
-  .guide-row {
-    grid-template-columns:
-      9.25rem
-      minmax(0, 1fr);
-  }
-
 }
 
 
@@ -796,11 +544,6 @@ h1 {
 
 
 
-  .title-kanji {
-    margin-top: 0.3rem;
-  }
-
-
   .description {
     max-width: 28rem;
 
@@ -817,17 +560,32 @@ h1 {
   }
 
 
-  .viewer-guide {
-    width: 17rem;
-  }
+}
 
 
-  .guide-title {
-    margin-bottom: 0.45rem;
+/* Short screens: show only the work details,
+   so the text blocks do not run into each other */
+@media (max-height: 660px) {
+
+  .metadata .tech,
+  .metadata .tech-group {
+    display: none;
   }
 
 }
 
+/* Visually hidden, but kept for screen readers and document structure */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 </style>
 </head>
 
@@ -892,33 +650,7 @@ h1 {
      WORK TITLE
 ========================================================= -->
 
-<header class="work-title">
-
-  <h1 class="display-text">
-
-    <span class="title-main">
-      Chi Ishi
-    </span>
-
-    <span
-      class="title-kanji"
-      lang="ja"
-    >
-      鎚石
-    </span>
-
-  </h1>
-
-  <div class="work-subtitle">
-    An interactive spatial record of an assemblage<br>
-    of a supplementary training object
-  </div>
-
-  <div class="work-author small-text">
-    Dr Aleksa Bijelović
-  </div>
-
-</header>
+<h1 class="sr-only">Chi Ishi 鎚石</h1>
 
 
 
@@ -932,13 +664,45 @@ h1 {
   <div class="metadata">
 
     <div class="label">
+      Title
+    </div>
+
+    <div class="value">
+      Chi Ishi
+    </div>
+
+    <div class="label">
+      Title (JP)
+    </div>
+
+    <div class="value">
+      鎚石
+    </div>
+
+    <div class="label">
+      Subtitle
+    </div>
+
+    <div class="value">
+      An interactive spatial record of an assemblage of a supplementary training object
+    </div>
+
+    <div class="label">
+      Author
+    </div>
+
+    <div class="value">
+      Dr Aleksa Bijelović
+    </div>
+
+    <div class="group" aria-hidden="true"></div>
+    <div class="label">
       Medium
     </div>
 
     <div class="value">
       Point cloud
     </div>
-
 
     <div class="label">
       Status
@@ -948,7 +712,6 @@ h1 {
       Iterative study
     </div>
 
-
     <div class="label">
       Subject
     </div>
@@ -956,7 +719,6 @@ h1 {
     <div class="value">
       Prop-object assemblage
     </div>
-
 
     <div class="label">
       Mode
@@ -966,64 +728,74 @@ h1 {
       Interactive 3D
     </div>
 
+    <div class="group" aria-hidden="true"></div>
+    <div class="label tech">
+      Format
+    </div>
+
+    <div class="value tech">
+      PLY (ASCII), KIRI Engine
+    </div>
+
+    <div class="label tech">
+      Source
+    </div>
+
+    <div class="value tech">
+      135,888 vertices, 250,000 triangles
+    </div>
+
+    <div class="label tech">
+      Sketchfab
+    </div>
+
+    <div class="value tech">
+      88,884 vertices, rendered as point cloud
+    </div>
+
+    <div class="label tech">
+      Texture
+    </div>
+
+    <div class="value tech">
+      None (texture map missing)
+    </div>
+
+    <div class="label tech">
+      Units
+    </div>
+
+    <div class="value tech">
+      Not stated in source file
+    </div>
+
+    <div class="label tech">
+      Up axis
+    </div>
+
+    <div class="value tech">
+      Z (per owner; not stated in source file)
+    </div>
+
+    <div class="label tech">
+      Mesh
+    </div>
+
+    <div class="value tech">
+      Open, not watertight (21,386 boundary edges)
+    </div>
+
+    <div class="label tech">
+      Extent
+    </div>
+
+    <div class="value tech">
+      0.219 × 0.225 × 0.391 units, source (X × Y × Z)
+    </div>
+
   </div>
 
 </section>
-
-
-<!-- =========================================================
-     TOUCH + MOUSE INTERACTION GUIDE
-========================================================= -->
-
-<div
-  class="viewer-guide"
-  aria-hidden="true"
->
-
-  <div class="guide-title">
-    Explore the object
-  </div>
-
-
-  <div class="guide-row">
-
-    <span class="guide-input">
-      Drag / mouse drag
-    </span>
-
-    <span class="guide-action">
-      Orbit
-    </span>
-
-  </div>
-
-
-  <div class="guide-row">
-
-    <span class="guide-input">
-      Pinch / mouse wheel
-    </span>
-
-    <span class="guide-action">
-      Zoom
-    </span>
-
-  </div>
-
-
-  <div class="guide-row">
-
-    <span class="guide-input">
-      Two-finger / shift-drag
-    </span>
-
-    <span class="guide-action">
-      Pan
-    </span>
-
-  </div>
-
-</div>
 
 
 </body>
