@@ -673,13 +673,11 @@ h1 {
 
 
   .viewer-guide {
-    right: var(--page-x);
+    left: var(--page-x);
+    right: auto;
 
-    bottom:
-      max(
-        1.25rem,
-        env(safe-area-inset-bottom)
-      );
+    top: 4.5rem;
+    bottom: auto;
 
     width: 16rem;
   }
@@ -837,6 +835,18 @@ h1 {
 
 }
 
+
+/* Short screens: show only the work details and hide the guide,
+   so the text blocks do not run into each other */
+@media (max-height: 660px) {
+
+  .metadata .tech,
+  .metadata .tech-group,
+  .viewer-guide {
+    display: none;
+  }
+
+}
 </style>
 </head>
 
@@ -972,52 +982,52 @@ h1 {
       Interactive 3D
     </div>
 
-    <div class="group" aria-hidden="true"></div>
-    <div class="label">
+    <div class="group tech-group" aria-hidden="true"></div>
+    <div class="label tech">
       Format
     </div>
 
-    <div class="value">
+    <div class="value tech">
       PLY (ASCII), KIRI Engine
     </div>
 
-    <div class="label">
+    <div class="label tech">
       Source
     </div>
 
-    <div class="value">
+    <div class="value tech">
       135,888 vertices, 250,000 triangles
     </div>
 
-    <div class="label">
+    <div class="label tech">
       Sketchfab
     </div>
 
-    <div class="value">
+    <div class="value tech">
       88,884 vertices, rendered as point cloud
     </div>
 
-    <div class="label">
+    <div class="label tech">
       Texture
     </div>
 
-    <div class="value">
+    <div class="value tech">
       None (texture map missing)
     </div>
 
-    <div class="label">
+    <div class="label tech">
       Extent
     </div>
 
-    <div class="value">
+    <div class="value tech">
       0.219 × 0.225 × 0.391 units, source (X × Y × Z)
     </div>
 
-    <div class="label">
+    <div class="label tech">
       Height
     </div>
 
-    <div class="value">
+    <div class="value tech">
       0.225 units, source (Y axis)
     </div>
 
