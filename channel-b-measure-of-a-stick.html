@@ -1296,6 +1296,78 @@ p {
 .figure-caption {
   color: #0800FF;
 }
+
+/* Methodology image: sits in the same columns as the row text */
+
+.method-figure {
+  display: grid;
+
+  grid-template-columns:
+    minmax(3.5rem, 0.45fr)
+    minmax(11rem, 1fr)
+    minmax(0, 2.2fr);
+
+  gap:
+    clamp(1.5rem, 4vw, 4.5rem);
+
+  margin-top: 3.75rem;
+}
+
+
+.method-image {
+  grid-column: 3;
+
+  margin: 0;
+}
+
+
+.method-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  mix-blend-mode: hard-light;
+}
+
+
+@media (min-width: 781px) and (max-width: 1180px) {
+
+  .method-figure {
+    grid-template-columns:
+      2.75rem
+      minmax(9rem, 0.9fr)
+      minmax(0, 2fr);
+  }
+
+}
+
+
+@media (max-width: 780.98px) {
+
+  .method-figure {
+    grid-template-columns:
+      2.25rem
+      minmax(0, 1fr);
+  }
+
+  .method-image {
+    grid-column: 2;
+  }
+
+}
+
+
+@media (max-width: 390px) {
+
+  .method-figure {
+    grid-template-columns:
+      1.8rem
+      minmax(0, 1fr);
+  }
+
+}
+
 </style>
 </head>
 
@@ -1804,6 +1876,20 @@ p {
             novel physical objects and bodily propositions.
           </p>
         </article>
+
+      </div>
+
+      <div class="method-figure">
+
+        <figure class="method-image">
+          <img
+            src="images/measure-of-a-stick-4.png"
+            alt="Three wooden sticks, each bound with bent wire loops and metal fittings."
+            width="600"
+            height="800"
+            loading="lazy"
+          >
+        </figure>
 
       </div>
 
