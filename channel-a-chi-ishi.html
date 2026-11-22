@@ -241,11 +241,8 @@ p {
   position: absolute;
   z-index: 10;
 
-  top:
-    max(
-      5rem,
-      calc(env(safe-area-inset-top) + 4rem)
-    );
+  top: 50%;
+  transform: translateY(-50%);
 
   left: var(--page-x);
   right: var(--page-x);
@@ -285,6 +282,34 @@ h1 {
   letter-spacing: 0em;
 
   color: var(--dark);
+}
+
+
+/* Text block under the title: Channel B opening-subtitle and author styles */
+
+.work-subtitle {
+  max-width: 49rem;
+
+  margin-top: 2.75rem;
+
+  font-family:
+    "Roboto Mono",
+    monospace;
+
+  font-size: var(--type-body);
+  font-weight: 400;
+
+  line-height: 1.4;
+  letter-spacing: 0em;
+
+  color: var(--dark);
+}
+
+
+.work-author {
+  margin-top: 1.25rem;
+
+  color: #0800FF;
 }
 
 
@@ -476,13 +501,6 @@ h1 {
   }
 
 
-  .work-title {
-    top:
-      max(
-        5rem,
-        calc(env(safe-area-inset-top) + 4rem)
-      );
-  }
 
 
   h1 {
@@ -558,13 +576,6 @@ h1 {
   }
 
 
-  .work-title {
-    top:
-      max(
-        4.5rem,
-        calc(env(safe-area-inset-top) + 3.75rem)
-      );
-  }
 
 
   h1 {
@@ -708,13 +719,6 @@ h1 {
   }
 
 
-  .work-title {
-    top:
-      max(
-        4.2rem,
-        calc(env(safe-area-inset-top) + 3.5rem)
-      );
-  }
 
 
   .description {
@@ -757,13 +761,6 @@ h1 {
   }
 
 
-  .work-title {
-    top:
-      max(
-        3.5rem,
-        calc(env(safe-area-inset-top) + 2.8rem)
-      );
-  }
 
 
   .title-kanji {
@@ -878,6 +875,14 @@ h1 {
     </span>
 
   </h1>
+
+  <div class="work-subtitle">
+    [Subtitle placeholder]
+  </div>
+
+  <div class="work-author small-text">
+    Dr Aleksa Bijelović
+  </div>
 
 </header>
 
