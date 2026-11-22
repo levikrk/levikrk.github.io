@@ -417,6 +417,13 @@ h1 {
 }
 
 
+/* Gap between the work details and the technical details */
+.metadata .group {
+  grid-column: 1 / -1;
+  height: 0.9rem;
+}
+
+
 /* =========================================================
    INTERACTION GUIDE
 ========================================================= */
@@ -722,7 +729,8 @@ h1 {
     right: auto;
     left: var(--page-x);
 
-    bottom: 10.75rem;
+    top: 4.5rem;
+    bottom: auto;
 
     width: 16rem;
   }
@@ -763,7 +771,8 @@ h1 {
   .viewer-guide {
     width: 15rem;
 
-    bottom: 10.75rem;
+    top: 4.2rem;
+    bottom: auto;
   }
 
 
@@ -936,9 +945,8 @@ h1 {
     </div>
 
     <div class="value">
-      Point cloud
+      Textured 3D mesh
     </div>
-
 
     <div class="label">
       Status
@@ -948,7 +956,6 @@ h1 {
       Iterative study
     </div>
 
-
     <div class="label">
       Subject
     </div>
@@ -957,13 +964,53 @@ h1 {
       Prop-object assemblage
     </div>
 
-
     <div class="label">
       Mode
     </div>
 
     <div class="value">
       Interactive 3D
+    </div>
+
+    <div class="group" aria-hidden="true"></div>
+    <div class="label">
+      Format
+    </div>
+
+    <div class="value">
+      PLY (ASCII), KIRI Engine
+    </div>
+
+    <div class="label">
+      Geometry
+    </div>
+
+    <div class="value">
+      135,888 vertices, 250,000 triangles
+    </div>
+
+    <div class="label">
+      Texture
+    </div>
+
+    <div class="value">
+      1 map (3DModel.jpg)
+    </div>
+
+    <div class="label">
+      Extent
+    </div>
+
+    <div class="value">
+      0.219 × 0.225 × 0.391 units (X × Y × Z)
+    </div>
+
+    <div class="label">
+      Height
+    </div>
+
+    <div class="value">
+      0.225 units (Y axis)
     </div>
 
   </div>
