@@ -238,99 +238,7 @@ p {
    WORK TITLE
 ========================================================= */
 
-.work-title {
-  position: absolute;
-  z-index: 10;
-
-  /* Same region as Channel B's opening title: the block is centred
-     above a reserved footer area (height matches Channel B's footer) */
-  top: max(5rem, env(safe-area-inset-top));
-  bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 121px);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  padding: 8vh 0;
-
-  left: var(--page-x);
-  right: var(--page-x);
-
-  pointer-events: none;
-}
-
-
-h1 {
-  max-width: 80rem;
-
-  margin: 0;
-}
-
-
-.title-main {
-  display: block;
-
-  color: var(--dark);
-}
-
-
-.title-kanji {
-  display: block;
-
-  margin-top: 0.65rem;
-
-  font-family:
-    "Inter",
-    Arial,
-    sans-serif;
-
-  font-size: 0.36em;
-  font-weight: 600;
-
-  line-height: 1.2;
-  letter-spacing: 0em;
-
-  color: var(--dark);
-}
-
-
 /* Text block under the title: Channel B opening-subtitle and author styles */
-
-.work-subtitle {
-  max-width: 49rem;
-
-  margin-top: 2.75rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-body);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: var(--dark);
-}
-
-
-.work-author {
-  margin-top: 1.25rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-small);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: #0800FF;
-}
-
 
 /* =========================================================
    INFORMATION
@@ -458,21 +366,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  h1 {
-    max-width: 58rem;
-  }
-
-
-  .work-title {
-    bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 150px);
-  }
-
-
-  .work-subtitle {
-    max-width: 40rem;
-  }
-
-
   .info {
     width:
       min(
@@ -531,27 +424,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  h1 {
-    line-height: 1.2;
-  }
-
-
-  .work-title {
-    top: max(4.5rem, env(safe-area-inset-top));
-    bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + 67px);
-    padding: 8vh 0;
-  }
-
-
-  .title-kanji {
-    margin-top: 0.45rem;
-
-    font-size: 0.36em;
-
-    line-height: 1.2;
-  }
-
-
   .info {
     bottom:
       max(
@@ -672,11 +544,6 @@ h1 {
 
 
 
-  .title-kanji {
-    margin-top: 0.3rem;
-  }
-
-
   .description {
     max-width: 28rem;
 
@@ -705,6 +572,19 @@ h1 {
     display: none;
   }
 
+}
+
+/* Visually hidden, but kept for screen readers and document structure */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 </style>
 </head>
@@ -770,33 +650,7 @@ h1 {
      WORK TITLE
 ========================================================= -->
 
-<header class="work-title">
-
-  <h1 class="display-text">
-
-    <span class="title-main">
-      Chi Ishi
-    </span>
-
-    <span
-      class="title-kanji"
-      lang="ja"
-    >
-      鎚石
-    </span>
-
-  </h1>
-
-  <div class="work-subtitle">
-    An interactive spatial record of an assemblage<br>
-    of a supplementary training object
-  </div>
-
-  <div class="work-author small-text">
-    Dr Aleksa Bijelović
-  </div>
-
-</header>
+<h1 class="sr-only">Chi Ishi 鎚石</h1>
 
 
 
@@ -809,6 +663,39 @@ h1 {
 
   <div class="metadata">
 
+    <div class="label">
+      Title
+    </div>
+
+    <div class="value">
+      Chi Ishi
+    </div>
+
+    <div class="label">
+      Title (JP)
+    </div>
+
+    <div class="value">
+      鎚石
+    </div>
+
+    <div class="label">
+      Subtitle
+    </div>
+
+    <div class="value">
+      An interactive spatial record of an assemblage of a supplementary training object
+    </div>
+
+    <div class="label">
+      Author
+    </div>
+
+    <div class="value">
+      Dr Aleksa Bijelović
+    </div>
+
+    <div class="group" aria-hidden="true"></div>
     <div class="label">
       Medium
     </div>
@@ -841,7 +728,7 @@ h1 {
       Interactive 3D
     </div>
 
-    <div class="group tech-group" aria-hidden="true"></div>
+    <div class="group" aria-hidden="true"></div>
     <div class="label tech">
       Format
     </div>
