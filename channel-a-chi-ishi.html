@@ -425,69 +425,6 @@ h1 {
 
 
 /* =========================================================
-   INTERACTION GUIDE
-========================================================= */
-
-.viewer-guide {
-  position: absolute;
-  z-index: 10;
-
-  right: var(--page-x);
-
-  bottom:
-    max(
-      2rem,
-      env(safe-area-inset-bottom)
-    );
-
-  width: 19rem;
-
-  font-family:
-    "Roboto Mono",
-    monospace;
-
-  font-size: var(--type-small);
-  font-weight: 400;
-
-  line-height: 1.4;
-  letter-spacing: 0em;
-
-  color: #FF0000;
-
-  pointer-events: none;
-}
-
-
-.guide-title {
-  margin-bottom: 0.9rem;
-
-  color: #FF0000;
-}
-
-
-.guide-row {
-  display: grid;
-
-  grid-template-columns:
-    minmax(8rem, 1.4fr)
-    minmax(0, 0.6fr);
-
-  gap: 0.8rem;
-}
-
-
-.guide-row + .guide-row {
-  margin-top: 0.3rem;
-}
-
-
-.guide-input,
-.guide-action {
-  color: #FF0000;
-}
-
-
-/* =========================================================
    TABLET
    781px to 1180px
 ========================================================= */
@@ -521,14 +458,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  .viewer-guide {
-    line-height: 1.4;
-    letter-spacing: 0em;
-  }
-
-
-
-
   h1 {
     max-width: 58rem;
   }
@@ -562,10 +491,6 @@ h1 {
     max-width: 26rem;
   }
 
-
-  .viewer-guide {
-    width: 18rem;
-  }
 
 }
 
@@ -606,14 +531,6 @@ h1 {
   .channel-description,
   .channel,
   .metadata,
-  .viewer-guide {
-    line-height: 1.4;
-    letter-spacing: 0em;
-  }
-
-
-
-
   h1 {
     line-height: 1.2;
   }
@@ -672,30 +589,6 @@ h1 {
   }
 
 
-  .viewer-guide {
-    left: var(--page-x);
-    right: auto;
-
-    top: 4.5rem;
-    bottom: auto;
-
-    width: 16rem;
-  }
-
-
-  .guide-title {
-    margin-bottom: 0.7rem;
-  }
-
-
-  .guide-row {
-    grid-template-columns:
-      10rem
-      minmax(0, 1fr);
-
-    gap: 0.5rem;
-  }
-
 }
 
 
@@ -722,16 +615,6 @@ h1 {
 
 
 
-
-  .viewer-guide {
-    right: auto;
-    left: var(--page-x);
-
-    top: 4.5rem;
-    bottom: auto;
-
-    width: 16rem;
-  }
 
 }
 
@@ -765,20 +648,6 @@ h1 {
       calc(100vw - 2rem);
   }
 
-
-  .viewer-guide {
-    width: 15rem;
-
-    top: 4.2rem;
-    bottom: auto;
-  }
-
-
-  .guide-row {
-    grid-template-columns:
-      9.25rem
-      minmax(0, 1fr);
-  }
 
 }
 
@@ -824,25 +693,15 @@ h1 {
   }
 
 
-  .viewer-guide {
-    width: 17rem;
-  }
-
-
-  .guide-title {
-    margin-bottom: 0.45rem;
-  }
-
 }
 
 
-/* Short screens: show only the work details and hide the guide,
+/* Short screens: show only the work details,
    so the text blocks do not run into each other */
 @media (max-height: 660px) {
 
   .metadata .tech,
-  .metadata .tech-group,
-  .viewer-guide {
+  .metadata .tech-group {
     display: none;
   }
 
