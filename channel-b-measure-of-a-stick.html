@@ -899,7 +899,8 @@ p {
     "Roboto Mono",
     monospace;
 
-  font-size: var(--type-body);
+  /* 70% of body size, rounded to whole pixels */
+  font-size: round(nearest, calc(var(--type-body) * 0.7), 1px);
   font-weight: 400;
 
   line-height: round(nearest, calc(var(--type-body) * 1.4), 1px);
